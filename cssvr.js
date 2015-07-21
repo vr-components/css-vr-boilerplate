@@ -7,12 +7,11 @@
     var world;
     var camera;
     var fullscreen = false;
+    var projectionTransform;
     var fullscreenButton = document.createElement('button');
     fullscreenButton.classList.add('fullscreen-button');
     fullscreenButton.innerHTML =  'Fullscreen';
     document.body.appendChild(fullscreenButton);
-
-
 
     function start() {
       var requestFullScreen;
@@ -31,10 +30,9 @@
     function setupPerspective() {
       var perspective = perspectiveMatrix(THREE.Math.degToRad(45), viewport.offsetWidth / viewport.offsetHeight, 1, 10000);
       perspective = perspective.clone().scale(new THREE.Vector3(viewport.offsetWidth, viewport.offsetHeight, 1));
-      var projectionTransform = getCSSMatrix(perspective);
+      projectionTransform = getCSSMatrix(perspective);
       viewport.style.transform = projectionTransform;
     }
-
 
     function setupScene() {
       var i;
@@ -80,8 +78,7 @@
       }
       updateElement(camera, {
         rotX: rotY,
-        rotY: rotX,
-        z: -500
+        rotY: rotX
       });
       viewport.style.transform = transform;
       window.requestAnimationFrame(updateCamera);
@@ -183,14 +180,9 @@
       rotY += deltaY;
       lastMouseX = event.clientX;
       lastMouseY = event.clientY;
-      var z = -500;
-      if (fullscreen) {
-        z = 0;
-      }
       updateElement(camera, {
         rotX: -rotY,
-        rotY: rotX,
-        z: -500
+        rotY: rotX
       });
     }, true);
 

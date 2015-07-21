@@ -1,0 +1,22 @@
+# CSS VR 
+
+Thin abstraction on top of VR CSS APIs that let you focus on setting up your scene.
+
+The library provides:
+
+1. Camera, viewport and world origin setup
+2. VR Devices detection and fullscreen setup.
+3. Mouse camera lookup when so you can create VR content without having a headset.
+4. Head orientation tracking if an HMD is available.
+
+How to use it:
+
+No time for reading? Just look at the example.
+
+Steps:
+
+0. Import the cssvr.js and cssvr.css files in your site.
+1. Create a div element with an id "scene"
+2. Setup your elements with a class "vr" and use regular 3d transforms to position them in space.
+3. It should just work. You should be able to look around with your mouse or headset. If not, please find issues.
+

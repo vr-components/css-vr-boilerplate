@@ -1,17 +1,17 @@
 .button {
   color: #FFF;
-  width: 250px;
-  height: 250px;
+  width: 8cm;
+  height: 8cm;
   background-color: #0480D1;
   font-size: 24pt;
-  padding: 15px;
+  padding: 0.5cm;
   text-align: center;
 }
 
 .left {
-  transform: translate3d(-50%, -50%, 0px) translate3d(-400px, 0, 0);
+  transform: translate3d(-50%, -50%, 0px) translate3d(-10cm, 0, 0);
 }
 
 .right {
-  transform: translate3d(-50%, -50%, 0px) translate3d(400px, 0, 0);
+  transform: translate3d(-50%, -50%, 0px) translate3d(10cm, 0, 0);
 }
