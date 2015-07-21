@@ -61,7 +61,7 @@
       camera.appendChild(world);
     }
 
-    if (navigator.getVRDevices) {
+    if (navigator.getVRDevices && navigator.getVRDevices.then) {
       navigator.getVRDevices().then(function(devices) {
         vrDevices.headset = devices[0];
         vrDevices.position = devices[1];
