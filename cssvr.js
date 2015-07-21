@@ -2,10 +2,10 @@
  (function(define){'use strict';define(function(require,exports,module){
 
     var vrDevices = {};
-    var viewport = document.querySelector('.viewport');
-    var scene = document.querySelector('.scene');
-    var world = document.querySelector('.world');
-    var camera = document.querySelector('.camera');
+    var viewport;
+    var scene = document.querySelector('#scene');
+    var world;
+    var camera;
     var fullscreen = false;
     var fullscreenButton = document.createElement('button');
     fullscreenButton.classList.add('fullscreen-button');
@@ -13,16 +13,44 @@
     document.body.appendChild(fullscreenButton);
 
     function start() {
-      var requestFullScreen = scene.mozRequestFullScreen || scene.webkitRequestFullscreen;
+      var requestFullScreen;
       var fsButton = document.querySelector('.fullscreen-button');
-
+      setupScene();
+      setupPerspective();
+      requestFullScreen = scene.mozRequestFullScreen || scene.webkitRequestFullscreen;
       fsButton.addEventListener('click', function() {
         requestFullScreen.call(scene, { vrDisplay: vrDevices.headset });
       })
-
       window.addEventListener('resize', function(e) {
         console.log('window Height = viewport Height', window.innerHeight == viewport.offsetHeight)
       })
+    }
+
+    function setupScene() {
+      var i;
+      var vrEls = scene.children;
+      var vrElsLength = vrEls.length;
+      viewport = document.createElement('div');
+      viewport.classList.add('viewport');
+      camera = document.createElement('div');
+      camera.classList.add('vr');
+      camera.classList.add('camera');
+      world = document.createElement('div');
+      world.classList.add('vr');
+      world.classList.add('world');
+
+      // Setup Hierarchy
+      // scene
+      //   viewport
+      //      camera
+      //        world
+      //          user-elements
+      for(i = 0; i < vrElsLength; ++i) {
+        world.appendChild(vrEls[0]);
+      }
+      scene.appendChild(viewport);
+      viewport.appendChild(camera);
+      camera.appendChild(world);
     }
 
     if (navigator.getVRDevices) {
@@ -150,7 +178,7 @@
         z = 0;
       }
       updateElement(camera, {
-        rotX: rotY,
+        rotX: -rotY,
         rotY: rotX,
         z: -500
       });
@@ -168,10 +196,13 @@
       object.style.transform = "translate3d(-50%, -50%, 0px) " + getCSSMatrix(translation.multiply(rotationZ.multiply(rotationY.multiply(rotationX))));
     }
 
-    var perspective = perspectiveMatrix(THREE.Math.degToRad(45), viewport.offsetWidth / viewport.offsetHeight, 1, 10000);
-    perspective = perspective.clone().scale(new THREE.Vector3(viewport.offsetWidth, viewport.offsetHeight, 1));
-    var projectionTransform = getCSSMatrix(perspective);
-    viewport.style.transform = projectionTransform;
+    var setupPerspective = function () {
+      var perspective = perspectiveMatrix(THREE.Math.degToRad(45), viewport.offsetWidth / viewport.offsetHeight, 1, 10000);
+      perspective = perspective.clone().scale(new THREE.Vector3(viewport.offsetWidth, viewport.offsetHeight, 1));
+      var projectionTransform = getCSSMatrix(perspective);
+      viewport.style.transform = projectionTransform;
+    }
+
 
 });})(typeof define=='function'&&define.amd?define
 :(function(n,w){'use strict';return typeof module=='object'?function(c){
