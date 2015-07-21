@@ -21,7 +21,7 @@ html, body {
 }
 
 .world {
-  transform: translate3d(-50%, -50%, -30cm);
+  transform: translate3d(-50%, -50%, 0cm);
 }
 
 .viewport {

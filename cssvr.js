@@ -66,7 +66,7 @@
         vrDevices.headset = devices[0];
         vrDevices.position = devices[1];
         start();
-      });
+      }, function() { debugger; });
     } else { start(); }
 
     function updateCamera() {
