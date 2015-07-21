@@ -12,6 +12,8 @@
     fullscreenButton.innerHTML =  'Fullscreen';
     document.body.appendChild(fullscreenButton);
 
+
+
     function start() {
       var requestFullScreen;
       var fsButton = document.querySelector('.fullscreen-button');
@@ -25,6 +27,14 @@
         console.log('window Height = viewport Height', window.innerHeight == viewport.offsetHeight)
       })
     }
+
+    function setupPerspective() {
+      var perspective = perspectiveMatrix(THREE.Math.degToRad(45), viewport.offsetWidth / viewport.offsetHeight, 1, 10000);
+      perspective = perspective.clone().scale(new THREE.Vector3(viewport.offsetWidth, viewport.offsetHeight, 1));
+      var projectionTransform = getCSSMatrix(perspective);
+      viewport.style.transform = projectionTransform;
+    }
+
 
     function setupScene() {
       var i;
@@ -97,7 +107,7 @@
       viewport.classList.add('fullscreen');
     }
 
-    var perspectiveMatrix = function(fov, aspect, nearz, farz) {
+    function perspectiveMatrix(fov, aspect, nearz, farz) {
       var matrix = new THREE.Matrix4();
       var range = Math.tan(fov * 0.5) * nearz;
 
@@ -120,7 +130,7 @@
       return matrix.transpose();
     };
 
-    var getCSSMatrix = function (matrix) {
+    function getCSSMatrix(matrix) {
       var elements = matrix.elements;
 
       return 'matrix3d(' +
@@ -143,7 +153,7 @@
       ')';
     };
 
-    var epsilon = function ( value ) {
+    function epsilon( value ) {
       return Math.abs( value ) < 0.000001 ? 0 : value;
     };
 
@@ -195,14 +205,6 @@
       var rotationZ = new THREE.Matrix4().makeRotationZ(rotZ);
       object.style.transform = "translate3d(-50%, -50%, 0px) " + getCSSMatrix(translation.multiply(rotationZ.multiply(rotationY.multiply(rotationX))));
     }
-
-    var setupPerspective = function () {
-      var perspective = perspectiveMatrix(THREE.Math.degToRad(45), viewport.offsetWidth / viewport.offsetHeight, 1, 10000);
-      perspective = perspective.clone().scale(new THREE.Vector3(viewport.offsetWidth, viewport.offsetHeight, 1));
-      var projectionTransform = getCSSMatrix(perspective);
-      viewport.style.transform = projectionTransform;
-    }
-
 
 });})(typeof define=='function'&&define.amd?define
 :(function(n,w){'use strict';return typeof module=='object'?function(c){
