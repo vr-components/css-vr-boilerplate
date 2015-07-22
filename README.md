@@ -5,13 +5,13 @@ Thin abstraction on top of VR CSS APIs that let you focus on setting up your sce
 The library provides:
 
 1. Camera, viewport and world origin setup
-2. VR Devices detection and fullscreen setup.
-3. Mouse camera lookup when so you can create VR content without having a headset.
+2. VR Devices detection and fullscreen and zero sensor mechanisms.
+3. Mouse camera lookup so you can create VR content without having a headset.
 4. Head orientation tracking if an HMD is available.
 
 How to use it:
 
-No time for reading? Just look at the [example](https://vr-components.github.io/css-vr-boilerplate/examples/index.html)
+No time for reading? Just look at the [example](https://vr-components.github.io/css-vr-boilerplate/examples/index.html). You can zero the sensors by pressing 'z'
 
 Steps:
 
