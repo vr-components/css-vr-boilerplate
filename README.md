@@ -27,8 +27,6 @@ Steps:
 </div>
 ```
 
-3. It should just work. You should be able to look around with your mouse or headset. If not, please find issues.
-
 ## Needs work
 
 Three.js is a dependency just for the Math functions. I postpone a more nimble solution until the library proves its value.
