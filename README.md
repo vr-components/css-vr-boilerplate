@@ -18,5 +18,18 @@ Steps:
 0. Import the [cssvr.js](https://vr-components.github.io/css-vr-boilerplate/dist/cssvr.js) and [cssvr.css](https://vr-components.github.io/css-vr-boilerplate/dist/cssvr.js) files in your site.
 1. Create a div element with id "scene"
 2. Setup your elements with a class "vr" and use regular 3d transforms to position them in space.
+
+```html
+<div id="scene">
+  <div class="vr button left">WebVR</div>
+  <div class="vr button middle">WebVR</div>
+  <div class="vr button right">WebVR</div>
+</div>
+```
+
 3. It should just work. You should be able to look around with your mouse or headset. If not, please find issues.
+
+## Needs work
+
+Three.js is a dependency just for the Math functions. I postpone a more nimble solution until the library proves its value.
 
