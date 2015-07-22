@@ -118,11 +118,18 @@
     function pollHeadOrientation() {
       var orientation;
       var quaternion;
+      var position
+      var state;
       if (vrDevices.position) {
-        orientation = vrDevices.position.getState().orientation;
+        state = vrDevices.position.getState()
+        orientation = state.orientation;
+        position = state.position;
         if (orientation) {
           quaternion = new THREE.Quaternion(orientation.x, -orientation.y, orientation.z, orientation.w);
           rotation = new THREE.Matrix4().makeRotationFromQuaternion(quaternion);
+        }
+        if (position) {
+          translation = new THREE.Matrix4().makeTranslation(position.x , position.y , position.z);
         }
       }
       updateElement(camera, {
@@ -250,6 +257,7 @@
         rotY = 0;
         rotation = new THREE.Matrix4();
         translation = new THREE.Matrix4();
+        if (vrDevices.position) { vrDevices.position.resetSensor(); }
       }
     };
 
