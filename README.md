@@ -1,4 +1,4 @@
-# CSS VR 
+# VR CSS Boilerplate 
 
 Thin abstraction on top of VR CSS APIs that let you focus on setting up your scene.
 
