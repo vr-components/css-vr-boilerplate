@@ -1,0 +1,22 @@
+.button {
+  color: #FFF;
+  width: 8cm;
+  height: 8cm;
+  background-color: #0480D1;
+  font-size: 24pt;
+  padding: 0.5cm;
+  text-align: center;
+}
+
+.left {
+  transform: translate3d(-50%, -50%, 0px) translate3d(-10cm, 0, 0);
+}
+
+.right {
+  transform: translate3d(-50%, -50%, 0px) translate3d(10cm, 0, 0);
+}
+
+.world {
+  transform: translate3d(-50%, -50%, -30cm);
+}
+

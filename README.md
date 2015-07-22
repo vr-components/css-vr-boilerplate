@@ -11,12 +11,12 @@ The library provides:
 
 How to use it:
 
-No time for reading? Just look at the example.
+No time for reading? Just look at the [example](https://vr-components.github.io/css-vr-boilerplate/examples/index.html)
 
 Steps:
 
-0. Import the cssvr.js and cssvr.css files in your site.
-1. Create a div element with an id "scene"
+0. Import the [cssvr.js](https://vr-components.github.io/css-vr-boilerplate/dist/cssvr.js) and [cssvr.css](https://vr-components.github.io/css-vr-boilerplate/dist/cssvr.js) files in your site.
+1. Create a div element with id "scene"
 2. Setup your elements with a class "vr" and use regular 3d transforms to position them in space.
 3. It should just work. You should be able to look around with your mouse or headset. If not, please find issues.
 
