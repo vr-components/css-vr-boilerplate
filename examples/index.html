@@ -32,6 +32,19 @@
           VRCSS.zeroSensor();
         }
       }
+
+      // It inserts a button on the top left corner
+      // to request fullscreen
+      setupFullscreenButton();
+
+      function setupFullscreenButton() {
+        var fullscreenButton = document.createElement('button');
+        fullscreenButton.classList.add('fullscreen-button');
+        fullscreenButton.innerHTML = 'Fullscreen';
+        document.body.appendChild(fullscreenButton);
+        fullscreenButton.addEventListener('click', VRCSS.enterVR);
+      }
+
   </script>
 </body>
 </html>

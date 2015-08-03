@@ -9,7 +9,6 @@
     var fullscreen = false;
     var projectionTransform;
     var fov;
-    var fullscreenButton = document.createElement('button');
     var x = 0;
     var y = 0;
     var z = 0;
@@ -28,9 +27,6 @@
       setupScene();
       // Initiates the camera perspective matrix
       setupPerspective();
-      // It inserts a button on the top left corner
-      // to request fullscreen
-      setupFullscreenButton();
       // For mouse look mode when there's no HMD avaialable
       setupInputEventHandlers();
       setupFullscreenHandlers();
@@ -60,14 +56,6 @@
 
     function enterVR() {
       requestFullScreen.call(scene, { vrDisplay: vrDevices.headset });
-    }
-
-    function setupFullscreenButton() {
-      fullscreenButton = document.createElement('button');
-      fullscreenButton.classList.add('fullscreen-button');
-      fullscreenButton.innerHTML = 'Fullscreen';
-      document.body.appendChild(fullscreenButton);
-      fullscreenButton.addEventListener('click', enterVR);
     }
 
     function setupPerspective() {

@@ -20,3 +20,8 @@
   transform: translate3d(-50%, -50%, -30cm);
 }
 
+.fullscreen-button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
