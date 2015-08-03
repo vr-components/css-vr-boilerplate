@@ -20,6 +20,8 @@
     var rotation;
     var rotationEuler = THREE.Euler(0, 0, 0, "YXZ");
     var requestAnimationFrameID;
+    var requestFullScreen;
+
 
     setupVRDevices(function() {
       // Creates viewport, camera and world elements
@@ -56,15 +58,16 @@
       }
     }
 
+    function enterVR() {
+      requestFullScreen.call(scene, { vrDisplay: vrDevices.headset });
+    }
+
     function setupFullscreenButton() {
       fullscreenButton = document.createElement('button');
       fullscreenButton.classList.add('fullscreen-button');
       fullscreenButton.innerHTML = 'Fullscreen';
       document.body.appendChild(fullscreenButton);
-      var requestFullScreen = scene.mozRequestFullScreen || scene.webkitRequestFullscreen;
-      fullscreenButton.addEventListener('click', function() {
-        requestFullScreen.call(scene, { vrDisplay: vrDevices.headset });
-      });
+      fullscreenButton.addEventListener('click', enterVR);
     }
 
     function setupPerspective() {
@@ -101,6 +104,7 @@
       scene.appendChild(viewport);
       viewport.appendChild(camera);
       camera.appendChild(world);
+      requestFullScreen = scene.mozRequestFullScreen || scene.webkitRequestFullscreen;
     }
 
     function updateCamera() {
@@ -266,7 +270,8 @@
         rotation = new THREE.Matrix4();
         translation = new THREE.Matrix4();
         if (vrDevices.position) { vrDevices.position.resetSensor(); }
-      }
+      },
+      enterVR: enterVR
     };
 
 });})(typeof define=='function'&&define.amd?define
