@@ -18,6 +18,7 @@ html, body {
   width: 100%;
   height: 100%;
   background-image: radial-gradient(#0B6790, #14364A);
+  cursor: grab;
 }
 
 .world {
@@ -30,6 +31,9 @@ html, body {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+}
+
+.viewport.fullscreen {
 }
 
 .viewport.fullscreen .camera {
