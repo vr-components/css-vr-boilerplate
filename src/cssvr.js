@@ -30,7 +30,7 @@
       // to request fullscreen
       setupFullscreenButton();
       // For mouse look mode when there's no HMD avaialable
-      setupMouseEventHandlers();
+      setupInputEventHandlers();
       setupFullscreenHandlers();
       // Function that updates the camera orientation from HMD information
       requestAnimationFrameID = window.requestAnimationFrame(updateCamera);
@@ -211,7 +211,7 @@
     var cameraRotation;
     var cameraTranslation;
 
-    function setupMouseEventHandlers() {
+    function setupInputEventHandlers() {
       scene.addEventListener('mousedown', function(event) {
         rotationEnabled = true;
         lastMouseX = event.clientX;
@@ -244,6 +244,13 @@
         rotation = new THREE.Matrix4().makeRotationFromEuler(rotationEuler);
 
       }, true);
+
+      document.documentElement.addEventListener('keydown', function (e) {
+          if ( ( e.keycode || e.which ) == 32) {
+              e.preventDefault();
+          }
+      }, false);
+
     }
 
     var updateElement = function(object, data) {
