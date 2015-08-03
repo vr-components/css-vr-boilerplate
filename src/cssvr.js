@@ -229,17 +229,18 @@
         var deltaX = (event.clientX - lastMouseX) * 0.2;
         var deltaY = (event.clientY - lastMouseY) * 0.2;
         rotX += deltaX;
-        rotY += deltaY;
-        // Clamp to [-PI/2, PI/2]
-        rotY = Math.max( -180, Math.min( 180, rotY ) );
+        rotY -= deltaY;
+        // Clamp to [-PI / 2, PI / 2]
+        rotY = Math.max( -90, Math.min( 90, rotY ) );
+
         lastMouseX = event.clientX;
         lastMouseY = event.clientY;
         translation = new THREE.Matrix4().makeTranslation(x , y , z);
         rotationEuler = new THREE.Euler(
-          -THREE.Math.degToRad(rotY),
+          THREE.Math.degToRad(rotY),
           THREE.Math.degToRad(rotX),
           THREE.Math.degToRad(rotZ),
-          "YXZ" );
+          "XYZ" );
         rotation = new THREE.Matrix4().makeRotationFromEuler(rotationEuler);
 
       }, true);
