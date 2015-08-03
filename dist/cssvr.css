@@ -21,6 +21,11 @@ html, body {
   cursor: grab;
 }
 
+#scene.selection-disabled {
+  user-select: none;
+  -moz-user-select: none;
+}
+
 .world {
   transform: translate3d(-50%, -50%, 0cm);
 }
@@ -31,9 +36,6 @@ html, body {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-}
-
-.viewport.fullscreen {
 }
 
 .viewport.fullscreen .camera {

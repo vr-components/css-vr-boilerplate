@@ -206,12 +206,14 @@
     function setupInputEventHandlers() {
       scene.addEventListener('mousedown', function(event) {
         rotationEnabled = true;
+        scene.classList.add('selection-disabled');
         lastMouseX = event.clientX;
         lastMouseY = event.clientY;
       }, true);
 
       scene.addEventListener('mouseup', function(event) {
         rotationEnabled = false;
+        scene.classList.remove('selection-disabled');
       }, true);
 
       scene.addEventListener('mousemove', function(event) {
