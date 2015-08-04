@@ -19,9 +19,6 @@ html, body {
   height: 100%;
   background-image: radial-gradient(#0B6790, #14364A);
   cursor: grab;
-}
-
-#scene.selection-disabled {
   user-select: none;
   -moz-user-select: none;
 }
