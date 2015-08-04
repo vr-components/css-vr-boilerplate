@@ -14,10 +14,15 @@ var flags = require('minimist')(process.argv.slice(2));
 // e.g: gulp --production
 // Gulp command line arguments
 var production = flags.production || false;
-var debug = flags.debug || !production;
 var watch = flags.watch;
 
 gulp.task('build', function(callback) {
+  build(true, 'cssvr.js', function() {
+    build(false, 'cssvr-min.js', callback);
+  })
+});
+
+function build(debug, filename, callback) {
   async.series([
      function (next) {
         gulp.src([
@@ -26,8 +31,8 @@ gulp.task('build', function(callback) {
         'src/cssvr.js'
         ])
         .pipe(gulpif(debug, sourcemaps.init()))
-        .pipe(gulpif(production, uglify()))
-        .pipe(concat('cssvr.js'))
+        .pipe(gulpif(!debug, uglify()))
+        .pipe(concat(filename))
         .pipe(gulpif(debug, sourcemaps.write()))
         .pipe(gulp.dest('./dist/'))
         .on('end', next);
@@ -37,7 +42,7 @@ gulp.task('build', function(callback) {
             .pipe(gulp.dest('./dist/'))
             .on('end', next);
       }], callback)
-});
+}
 
 gulp.task('clean', function() {
    return gulp.src(['./dist'], {read: false})
