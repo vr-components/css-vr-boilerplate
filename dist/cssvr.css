@@ -23,6 +23,10 @@ html, body {
   -moz-user-select: none;
 }
 
+#scene.grabbing {
+  cursor: grabbing;
+}
+
 .world {
   transform: translate3d(-50%, -50%, 0cm);
 }

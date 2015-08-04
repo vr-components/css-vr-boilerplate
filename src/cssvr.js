@@ -21,8 +21,9 @@
     var requestAnimationFrameID;
     var requestFullScreen;
 
-
+    var start = parseInt(new Date().getTime());
     setupVRDevices(function() {
+      var finish;
       // Creates viewport, camera and world elements
       setupScene();
       // Initiates the camera perspective matrix
@@ -30,6 +31,8 @@
       // For mouse look mode when there's no HMD avaialable
       setupInputEventHandlers();
       setupFullscreenHandlers();
+      finish = parseInt(new Date().getTime());
+      console.log("GET VR Devices time :" + (finish - start));
       // Function that updates the camera orientation from HMD information
       requestAnimationFrameID = window.requestAnimationFrame(updateCamera);
     });
@@ -207,6 +210,7 @@
       scene.addEventListener('mousedown', function(event) {
         rotationEnabled = true;
         scene.classList.add('selection-disabled');
+        scene.classList.add('grabbing');
         lastMouseX = event.clientX;
         lastMouseY = event.clientY;
       }, true);
@@ -214,6 +218,7 @@
       scene.addEventListener('mouseup', function(event) {
         rotationEnabled = false;
         scene.classList.remove('selection-disabled');
+        scene.classList.remove('grabbing');
       }, true);
 
       scene.addEventListener('mousemove', function(event) {
