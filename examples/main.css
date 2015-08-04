@@ -15,14 +15,17 @@
 
 .left {
   transform: translate3d(-50%, -50%, 0px) translate3d(-10cm, 0, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0px) translate3d(-10cm, 0, 0);
 }
 
 .right {
   transform: translate3d(-50%, -50%, 0px) translate3d(10cm, 0, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0px) translate3d(10cm, 0, 0);
 }
 
 .world {
   transform: translate3d(-50%, -50%, -30cm);
+  -webkit-transform: translate3d(-50%, -50%, -30cm);
 }
 
 .fullscreen-button {

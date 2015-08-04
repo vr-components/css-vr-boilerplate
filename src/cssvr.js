@@ -68,6 +68,7 @@
       perspective = perspective.clone().scale(new THREE.Vector3(viewport.offsetWidth, viewport.offsetHeight, 1));
       projectionTransform = getCSSMatrix(perspective);
       viewport.style.transform = projectionTransform;
+      viewport.style.webkitTransform = projectionTransform;
     }
 
     function setupScene() {
@@ -107,6 +108,7 @@
       }
       pollHeadOrientation();
       viewport.style.transform = transform;
+      viewport.style.webkitTransform = transform;
       window.requestAnimationFrame(updateCamera);
     }
 
@@ -255,7 +257,9 @@
     var updateElement = function(object, data) {
       var translation = data.translation.clone() || new THREE.Matrix4();
       var rotation = data.rotation || new THREE.Matrix4();
-      object.style.transform = "translate3d(-50%, -50%, 0px) " + getCSSMatrix(translation.multiply(rotation));
+      var cssMatrix = getCSSMatrix(translation.multiply(rotation));
+      object.style.transform = "translate3d(-50%, -50%, 0) " + cssMatrix;
+      object.style.webkitTransform = "translate3d(-50%, -50%, 0) " + cssMatrix;
     };
 
     module.exports = {
