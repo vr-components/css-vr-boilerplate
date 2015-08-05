@@ -23,6 +23,11 @@
   -webkit-transform: translate3d(-50%, -50%, 0) translate3d(10cm, 0, 0);
 }
 
+.back {
+  transform: translate3d(-50%, -50%, 0) translate3d(0, 0, 50cm);
+  -webkit-transform: translate3d(-50%, -50%, 0) translate3d(0, 0, 30cm);
+}
+
 .world {
   transform: translate3d(-50%, -50%, -30cm);
   -webkit-transform: translate3d(-50%, -50%, -30cm);

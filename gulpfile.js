@@ -29,7 +29,7 @@ function build(debug, filename, callback) {
         'lib/vendor/three.js',
         'src/perspective.js',
         'src/cssvr.js',
-        'src/vr-cursor.js'
+        'src/cursor.js'
         ])
         .pipe(gulpif(debug, sourcemaps.init()))
         .pipe(gulpif(!debug, uglify()))

@@ -14,7 +14,6 @@ html, body {
   -webkit-transform-style: preserve-3d;
   transform: translate3d(-50%, -50%, 0);
   -webkit-transform: translate3d(-50%, -50%, 0);
-
 }
 
 #scene {
@@ -33,6 +32,11 @@ html, body {
 .world {
   transform: translate3d(-50%, -50%, 0);
   -webkit-transform: translate3d(-50%, -50%, 0);
+}
+
+.world.hit-test {
+  transform: translate3d(-50%, -50%, 0) rotateY(180deg);
+  -webkit-transform: translate3d(-50%, -50%, 0) rotateY(180deg);
 }
 
 .viewport {
