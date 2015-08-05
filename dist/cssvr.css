@@ -48,3 +48,10 @@ html, body {
   transform: translate3d(-50%, -50%, 0);
   -webkit-transform: translate3d(-50%, -50%, 0);
 }
+
+.cursor {
+  height: .5cm;
+  width: .5cm;
+  border-radius: 100%;
+  background-color: red;
+}

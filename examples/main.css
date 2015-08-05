@@ -8,19 +8,19 @@
   text-align: center;
 }
 
-.button:hover {
+.button.hover {
   background-color: yellow;
   color: black;
 }
 
 .left {
-  transform: translate3d(-50%, -50%, 0px) translate3d(-10cm, 0, 0);
-  -webkit-transform: translate3d(-50%, -50%, 0px) translate3d(-10cm, 0, 0);
+  transform: translate3d(-50%, -50%, 0) translate3d(-10cm, 0, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0) translate3d(-10cm, 0, 0);
 }
 
 .right {
-  transform: translate3d(-50%, -50%, 0px) translate3d(10cm, 0, 0);
-  -webkit-transform: translate3d(-50%, -50%, 0px) translate3d(10cm, 0, 0);
+  transform: translate3d(-50%, -50%, 0) translate3d(10cm, 0, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0) translate3d(10cm, 0, 0);
 }
 
 .world {
@@ -30,6 +30,6 @@
 
 .fullscreen-button {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
 }

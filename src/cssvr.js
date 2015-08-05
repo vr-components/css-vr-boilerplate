@@ -20,6 +20,8 @@
     var rotationEuler = THREE.Euler(0, 0, 0, "YXZ");
     var requestAnimationFrameID;
     var requestFullScreen;
+    var cursorEnabled = false;
+    var sceneReady = false;
 
     var start = parseInt(new Date().getTime());
     setupVRDevices(function() {
@@ -31,8 +33,10 @@
       // For mouse look mode when there's no HMD avaialable
       setupInputEventHandlers();
       setupFullscreenHandlers();
-      finish = parseInt(new Date().getTime());
-      console.log("GET VR Devices time :" + (finish - start));
+      if (cursorEnabled) {
+        VRCursor.enable(true);
+      }
+      sceneReady = true;
       // Function that updates the camera orientation from HMD information
       requestAnimationFrameID = window.requestAnimationFrame(updateCamera);
     });
@@ -109,6 +113,7 @@
       pollHeadOrientation();
       viewport.style.transform = transform;
       viewport.style.webkitTransform = transform;
+      VRCursor.intersect(fullscreen);
       window.requestAnimationFrame(updateCamera);
     }
 
@@ -262,6 +267,11 @@
       object.style.webkitTransform = "translate3d(-50%, -50%, 0) " + cssMatrix;
     };
 
+    function enableCursor(enable) {
+      cursorEnabled = !!enable;
+      if (sceneReady) { VRCursor.enable(true); }
+    }
+
     module.exports = {
       zeroSensor: function () {
         rotX = 0;
@@ -270,7 +280,8 @@
         translation = new THREE.Matrix4();
         if (vrDevices.position) { vrDevices.position.resetSensor(); }
       },
-      enterVR: enterVR
+      enterVR: enterVR,
+      enableCursor: enableCursor
     };
 
 });})(typeof define=='function'&&define.amd?define
